@@ -1,0 +1,22 @@
+C:\Users\talle\Downloads\primerapractica\primerapractica\bin\Debug\primerapractica.exe.config
+C:\Users\talle\Downloads\primerapractica\primerapractica\bin\Debug\primerapractica.exe
+C:\Users\talle\Downloads\primerapractica\primerapractica\bin\Debug\primerapractica.pdb
+C:\Users\talle\Downloads\primerapractica\primerapractica\obj\Debug\primerapractica.csproj.AssemblyReference.cache
+C:\Users\talle\Downloads\primerapractica\primerapractica\obj\Debug\primerapractica.Form1.resources
+C:\Users\talle\Downloads\primerapractica\primerapractica\obj\Debug\primerapractica.Properties.Resources.resources
+C:\Users\talle\Downloads\primerapractica\primerapractica\obj\Debug\primerapractica.csproj.GenerateResource.cache
+C:\Users\talle\Downloads\primerapractica\primerapractica\obj\Debug\primerapractica.csproj.CoreCompileInputs.cache
+C:\Users\talle\Downloads\primerapractica\primerapractica\obj\Debug\primerapractica.exe
+C:\Users\talle\Downloads\primerapractica\primerapractica\obj\Debug\primerapractica.pdb
+C:\Users\talle\Downloads\primerapractica\primerapractica\obj\Debug\primerapractica.exe.config
+C:\Users\talle\Downloads\Programacion visual\semana 1\primerapractica\bin\Debug\primerapractica.exe.config
+C:\Users\talle\Downloads\Programacion visual\semana 1\primerapractica\bin\Debug\primerapractica.exe
+C:\Users\talle\Downloads\Programacion visual\semana 1\primerapractica\bin\Debug\primerapractica.pdb
+C:\Users\talle\Downloads\Programacion visual\semana 1\primerapractica\obj\Debug\primerapractica.csproj.AssemblyReference.cache
+C:\Users\talle\Downloads\Programacion visual\semana 1\primerapractica\obj\Debug\primerapractica.exe.config
+C:\Users\talle\Downloads\Programacion visual\semana 1\primerapractica\obj\Debug\primerapractica.Properties.Resources.resources
+C:\Users\talle\Downloads\Programacion visual\semana 1\primerapractica\obj\Debug\primerapractica.csproj.GenerateResource.cache
+C:\Users\talle\Downloads\Programacion visual\semana 1\primerapractica\obj\Debug\primerapractica.csproj.CoreCompileInputs.cache
+C:\Users\talle\Downloads\Programacion visual\semana 1\primerapractica\obj\Debug\primerapractica.exe
+C:\Users\talle\Downloads\Programacion visual\semana 1\primerapractica\obj\Debug\primerapractica.pdb
+C:\Users\talle\Downloads\Programacion visual\semana 1\primerapractica\obj\Debug\AplicacionCompleta.MainForm.resources
