@@ -1,210 +1,326 @@
 ﻿using System;
-using System.Globalization;
 using System.Windows.Forms;
 
 namespace CalculatorApp
 {
-    public partial class Calculator : Form
+    public partial class Form1 : Form
     {
         private double currentValue = 0;
         private double memoryValue = 0;
         private string currentOperation = "";
         private bool newOperation = true;
-        private bool operationPending = false;
+        private bool operationPressed = false;
 
-        public Calculator()
+        public Form1()
         {
             InitializeComponent();
-            AttachEventHandlers();
         }
 
-        private void AttachEventHandlers()
+        private void NumberButton_Click(object sender, EventArgs e)
         {
-            // Botones numéricos
-            btn0.Click += (s, e) => AppendNumber("0");
-            btn1.Click += (s, e) => AppendNumber("1");
-            btn2.Click += (s, e) => AppendNumber("2");
-            btn3.Click += (s, e) => AppendNumber("3");
-            btn4.Click += (s, e) => AppendNumber("4");
-            btn5.Click += (s, e) => AppendNumber("5");
-            btn6.Click += (s, e) => AppendNumber("6");
-            btn7.Click += (s, e) => AppendNumber("7");
-            btn8.Click += (s, e) => AppendNumber("8");
-            btn9.Click += (s, e) => AppendNumber("9");
-
-            // Operaciones básicas
-            btnAdd.Click += (s, e) => SetOperation("+");
-            btnSubtract.Click += (s, e) => SetOperation("-");
-            btnMultiply.Click += (s, e) => SetOperation("*");
-            btnDivide.Click += (s, e) => SetOperation("/");
-
-            // Botones especiales
-            btnEquals.Click += (s, e) => PerformCalculation();
-            btnDecimal.Click += (s, e) => AddDecimalPoint();
-            btnClear.Click += (s, e) => ClearCalculator();
-            btnBack.Click += (s, e) => Backspace();
-            btnSign.Click += (s, e) => ChangeSign();
-            btnPercent.Click += (s, e) => CalculatePercentage();
-
-            // Memoria
-            btnMplus.Click += (s, e) => MemoryAdd();
-            btnMminus.Click += (s, e) => MemorySubtract();
-            btnMC.Click += (s, e) => MemoryClear();
-            btnMR.Click += (s, e) => MemoryRecall();
-
-            // Funciones avanzadas
-            btnExp.Click += (s, e) => SetOperation("^");
-            btnSqrt.Click += (s, e) => CalculateSquareRoot();
-            btnPi.Click += (s, e) => ShowPi();
-            btnLog.Click += (s, e) => CalculateLog();
-            btnReciprocal.Click += (s, e) => CalculateReciprocal();
-            btnSquare.Click += (s, e) => CalculateSquare();
-        }
-
-        private void AppendNumber(string number)
-        {
-            if (newOperation)
+            if (newOperation || operationPressed)
             {
                 txtDisplay.Text = "";
                 newOperation = false;
+                operationPressed = false;
             }
 
-            // Evitar múltiples ceros a la izquierda
-            if (txtDisplay.Text == "0" && number != ".")
-                txtDisplay.Text = "";
+            Button button = (Button)sender;
 
-            txtDisplay.Text += number;
-        }
-
-        private void SetOperation(string op)
-        {
-            if (operationPending)
+            // Manejar el punto decimal
+            if (button.Text == ".")
             {
-                PerformCalculation();
+                if (txtDisplay.Text.Contains("."))
+                    return;
+                if (txtDisplay.Text == "")
+                    txtDisplay.Text = "0";
             }
+
+            // Evitar múltiples ceros al inicio
+            if (txtDisplay.Text == "0" && button.Text != ".")
+                txtDisplay.Text = button.Text;
             else
-            {
-                currentValue = double.Parse(txtDisplay.Text, CultureInfo.InvariantCulture);
-            }
-
-            currentOperation = op;
-            operationPending = true;
-            newOperation = true;
+                txtDisplay.Text += button.Text;
         }
 
-        private void PerformCalculation()
+        private void OperationButton_Click(object sender, EventArgs e)
         {
-            if (!operationPending) return;
-
-            double newValue = double.Parse(txtDisplay.Text, CultureInfo.InvariantCulture);
-
-            switch (currentOperation)
+            if (txtDisplay.Text != "" && txtDisplay.Text != "Error")
             {
-                case "+": currentValue += newValue; break;
-                case "-": currentValue -= newValue; break;
-                case "*": currentValue *= newValue; break;
-                case "/":
-                    if (newValue != 0)
-                        currentValue /= newValue;
-                    else
-                        MessageBox.Show("No se puede dividir por cero");
-                    break;
-                case "^": currentValue = Math.Pow(currentValue, newValue); break;
-            }
+                Button button = (Button)sender;
+                currentOperation = button.Text;
 
-            txtDisplay.Text = currentValue.ToString(CultureInfo.InvariantCulture);
-            operationPending = false;
-            newOperation = true;
-        }
+                if (!operationPressed)
+                {
+                    currentValue = double.Parse(txtDisplay.Text);
+                }
 
-        private void AddDecimalPoint()
-        {
-            if (newOperation)
-            {
-                txtDisplay.Text = "0.";
+                operationPressed = true;
                 newOperation = false;
             }
-            else if (!txtDisplay.Text.Contains("."))
+        }
+
+        private void btnEquals_Click(object sender, EventArgs e)
+        {
+            if (txtDisplay.Text != "" && txtDisplay.Text != "Error" && currentOperation != "")
             {
-                txtDisplay.Text += ".";
+                double secondValue = double.Parse(txtDisplay.Text);
+                double result = 0;
+                bool error = false;
+
+                switch (currentOperation)
+                {
+                    case "+":
+                        result = currentValue + secondValue;
+                        break;
+                    case "-":
+                        result = currentValue - secondValue;
+                        break;
+                    case "×":
+                        result = currentValue * secondValue;
+                        break;
+                    case "÷":
+                        if (secondValue != 0)
+                            result = currentValue / secondValue;
+                        else
+                            error = true;
+                        break;
+                    case "^":
+                        result = Math.Pow(currentValue, secondValue);
+                        break;
+                }
+
+                if (error)
+                    txtDisplay.Text = "Error";
+                else
+                    txtDisplay.Text = result.ToString();
+
+                currentValue = result;
+                newOperation = true;
+                operationPressed = false;
+                currentOperation = "";
             }
         }
 
-        private void ClearCalculator()
+        private void btnClear_Click(object sender, EventArgs e)
         {
             txtDisplay.Text = "0";
             currentValue = 0;
             currentOperation = "";
             newOperation = true;
-            operationPending = false;
+            operationPressed = false;
         }
 
-        private void Backspace()
+        private void btnBack_Click(object sender, EventArgs e)
         {
-            if (txtDisplay.Text.Length > 1)
-            {
+            if (txtDisplay.Text.Length > 1 && txtDisplay.Text != "Error")
                 txtDisplay.Text = txtDisplay.Text.Substring(0, txtDisplay.Text.Length - 1);
-            }
             else
-            {
                 txtDisplay.Text = "0";
+        }
+
+        private void btnSign_Click(object sender, EventArgs e)
+        {
+            if (txtDisplay.Text != "0" && txtDisplay.Text != "Error")
+            {
+                if (txtDisplay.Text.StartsWith("-"))
+                    txtDisplay.Text = txtDisplay.Text.Substring(1);
+                else
+                    txtDisplay.Text = "-" + txtDisplay.Text;
+            }
+        }
+
+        private void btnPercent_Click(object sender, EventArgs e)
+        {
+            if (txtDisplay.Text != "Error")
+            {
+                double value = double.Parse(txtDisplay.Text);
+                txtDisplay.Text = (value / 100).ToString();
                 newOperation = true;
             }
         }
 
-        private void ChangeSign()
+        private void btnSquare_Click(object sender, EventArgs e)
         {
-            if (txtDisplay.Text != "0")
+            if (txtDisplay.Text != "Error")
             {
-                double value = double.Parse(txtDisplay.Text, CultureInfo.InvariantCulture);
-                txtDisplay.Text = (-value).ToString(CultureInfo.InvariantCulture);
+                double value = double.Parse(txtDisplay.Text);
+                txtDisplay.Text = (value * value).ToString();
+                newOperation = true;
             }
         }
 
-        private void CalculatePercentage()
+        private void btnSqrt_Click(object sender, EventArgs e)
         {
-            double value = double.Parse(txtDisplay.Text, CultureInfo.InvariantCulture);
-            txtDisplay.Text = (value / 100).ToString(CultureInfo.InvariantCulture);
+            if (txtDisplay.Text != "Error")
+            {
+                double value = double.Parse(txtDisplay.Text);
+                if (value >= 0)
+                    txtDisplay.Text = Math.Sqrt(value).ToString();
+                else
+                    txtDisplay.Text = "Error";
+                newOperation = true;
+            }
         }
 
-        private void MemoryAdd() => memoryValue += double.Parse(txtDisplay.Text, CultureInfo.InvariantCulture);
-        private void MemorySubtract() => memoryValue -= double.Parse(txtDisplay.Text, CultureInfo.InvariantCulture);
-        private void MemoryClear() => memoryValue = 0;
-        private void MemoryRecall() => txtDisplay.Text = memoryValue.ToString(CultureInfo.InvariantCulture);
-
-        private void CalculateSquareRoot()
+        private void btnReciprocal_Click(object sender, EventArgs e)
         {
-            double value = double.Parse(txtDisplay.Text, CultureInfo.InvariantCulture);
-            if (value >= 0)
-                txtDisplay.Text = Math.Sqrt(value).ToString(CultureInfo.InvariantCulture);
-            else
-                MessageBox.Show("No se puede calcular la raíz de un número negativo");
+            if (txtDisplay.Text != "Error")
+            {
+                double value = double.Parse(txtDisplay.Text);
+                if (value != 0)
+                    txtDisplay.Text = (1 / value).ToString();
+                else
+                    txtDisplay.Text = "Error";
+                newOperation = true;
+            }
         }
 
-        private void ShowPi() => txtDisplay.Text = Math.PI.ToString(CultureInfo.InvariantCulture);
-
-        private void CalculateLog()
+        private void btnPi_Click(object sender, EventArgs e)
         {
-            double value = double.Parse(txtDisplay.Text, CultureInfo.InvariantCulture);
-            if (value > 0)
-                txtDisplay.Text = Math.Log10(value).ToString(CultureInfo.InvariantCulture);
-            else
-                MessageBox.Show("No se puede calcular el logaritmo de un número menor o igual a cero");
+            txtDisplay.Text = Math.PI.ToString();
+            newOperation = true;
         }
 
-        private void CalculateReciprocal()
+        private void btnLog_Click(object sender, EventArgs e)
         {
-            double value = double.Parse(txtDisplay.Text, CultureInfo.InvariantCulture);
-            if (value != 0)
-                txtDisplay.Text = (1 / value).ToString(CultureInfo.InvariantCulture);
-            else
-                MessageBox.Show("No se puede dividir por cero");
+            if (txtDisplay.Text != "Error")
+            {
+                double value = double.Parse(txtDisplay.Text);
+                if (value > 0)
+                    txtDisplay.Text = Math.Log10(value).ToString();
+                else
+                    txtDisplay.Text = "Error";
+                newOperation = true;
+            }
         }
 
-        private void CalculateSquare()
+        // Funciones de memoria
+        private void btnMplus_Click(object sender, EventArgs e)
         {
-            double value = double.Parse(txtDisplay.Text, CultureInfo.InvariantCulture);
-            txtDisplay.Text = (value * value).ToString(CultureInfo.InvariantCulture);
+            if (txtDisplay.Text != "Error")
+                memoryValue += double.Parse(txtDisplay.Text);
+        }
+
+        private void btnMminus_Click(object sender, EventArgs e)
+        {
+            if (txtDisplay.Text != "Error")
+                memoryValue -= double.Parse(txtDisplay.Text);
+        }
+
+        private void btnMC_Click(object sender, EventArgs e)
+        {
+            memoryValue = 0;
+        }
+
+        private void btnMR_Click(object sender, EventArgs e)
+        {
+            txtDisplay.Text = memoryValue.ToString();
+            newOperation = true;
+        }
+
+        // Funciones personalizadas (botones rojos)
+        private void btnSin_Click(object sender, EventArgs e)
+        {
+            if (txtDisplay.Text != "Error")
+            {
+                double value = double.Parse(txtDisplay.Text);
+                txtDisplay.Text = Math.Sin(value * Math.PI / 180).ToString("F6");
+                newOperation = true;
+            }
+        }
+
+        private void btnCos_Click(object sender, EventArgs e)
+        {
+            if (txtDisplay.Text != "Error")
+            {
+                double value = double.Parse(txtDisplay.Text);
+                txtDisplay.Text = Math.Cos(value * Math.PI / 180).ToString("F6");
+                newOperation = true;
+            }
+        }
+
+        private void btnTan_Click(object sender, EventArgs e)
+        {
+            if (txtDisplay.Text != "Error")
+            {
+                double value = double.Parse(txtDisplay.Text);
+                txtDisplay.Text = Math.Tan(value * Math.PI / 180).ToString("F6");
+                newOperation = true;
+            }
+        }
+
+        private void btnFactorial_Click(object sender, EventArgs e)
+        {
+            if (txtDisplay.Text != "Error")
+            {
+                int value;
+                if (int.TryParse(txtDisplay.Text, out value) && value >= 0 && value <= 20)
+                {
+                    long result = 1;
+                    for (int i = 2; i <= value; i++)
+                        result *= i;
+                    txtDisplay.Text = result.ToString();
+                }
+                else
+                {
+                    txtDisplay.Text = "Error";
+                }
+                newOperation = true;
+            }
+        }
+
+        private void btnExp_Click(object sender, EventArgs e)
+        {
+            OperationButton_Click(sender, e);
+        }
+
+        // Conectar eventos de los botones
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // Conectar eventos de números
+            btn0.Click += NumberButton_Click;
+            btn1.Click += NumberButton_Click;
+            btn2.Click += NumberButton_Click;
+            btn3.Click += NumberButton_Click;
+            btn4.Click += NumberButton_Click;
+            btn5.Click += NumberButton_Click;
+            btn6.Click += NumberButton_Click;
+            btn7.Click += NumberButton_Click;
+            btn8.Click += NumberButton_Click;
+            btn9.Click += NumberButton_Click;
+            btnDecimal.Click += NumberButton_Click;
+
+            // Conectar eventos de operaciones básicas
+            btnAdd.Click += OperationButton_Click;
+            btnSubtract.Click += OperationButton_Click;
+            btnMultiply.Click += OperationButton_Click;
+            btnDivide.Click += OperationButton_Click;
+            btnExp.Click += OperationButton_Click;
+
+            // Conectar eventos de los botones personalizados
+            btnSin.Click += btnSin_Click;
+            btnCos.Click += btnCos_Click;
+            btnTan.Click += btnTan_Click;
+            btnFactorial.Click += btnFactorial_Click;
+
+            // Conectar eventos de funciones especiales
+            btnClear.Click += btnClear_Click;
+            btnBack.Click += btnBack_Click;
+            btnEquals.Click += btnEquals_Click;
+            btnSign.Click += btnSign_Click;
+            btnPercent.Click += btnPercent_Click;
+            btnSquare.Click += btnSquare_Click;
+            btnSqrt.Click += btnSqrt_Click;
+            btnReciprocal.Click += btnReciprocal_Click;
+            btnPi.Click += btnPi_Click;
+            btnLog.Click += btnLog_Click;
+
+            // Conectar eventos de memoria
+            btnMplus.Click += btnMplus_Click;
+            btnMminus.Click += btnMminus_Click;
+            btnMC.Click += btnMC_Click;
+            btnMR.Click += btnMR_Click;
         }
     }
 }

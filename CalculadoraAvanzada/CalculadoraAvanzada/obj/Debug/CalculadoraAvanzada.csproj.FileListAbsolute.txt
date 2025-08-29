@@ -5,6 +5,7 @@ C:\Users\talle\Downloads\CalculadoraAvanzada\CalculadoraAvanzada\obj\Debug\Calcu
 C:\Users\talle\Downloads\CalculadoraAvanzada\CalculadoraAvanzada\bin\Debug\CalculadoraAvanzada.exe.config
 C:\Users\talle\Downloads\CalculadoraAvanzada\CalculadoraAvanzada\bin\Debug\CalculadoraAvanzada.exe
 C:\Users\talle\Downloads\CalculadoraAvanzada\CalculadoraAvanzada\bin\Debug\CalculadoraAvanzada.pdb
-C:\Users\talle\Downloads\CalculadoraAvanzada\CalculadoraAvanzada\obj\Debug\CalculatorApp.Calculator.resources
 C:\Users\talle\Downloads\CalculadoraAvanzada\CalculadoraAvanzada\obj\Debug\CalculadoraAvanzada.exe
 C:\Users\talle\Downloads\CalculadoraAvanzada\CalculadoraAvanzada\obj\Debug\CalculadoraAvanzada.pdb
+C:\Users\talle\Downloads\CalculadoraAvanzada\CalculadoraAvanzada\obj\Debug\CalculadoraAvanzada.exe.config
+C:\Users\talle\Downloads\CalculadoraAvanzada\CalculadoraAvanzada\obj\Debug\CalculatorApp.Form1.resources

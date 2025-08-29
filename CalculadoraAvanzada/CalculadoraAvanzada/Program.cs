@@ -13,7 +13,7 @@ namespace CalculatorApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Calculator()); // Cambiado de Form1 a Calculator
-        }
+            Application.Run(new Form1());
+        }
     }
 }
