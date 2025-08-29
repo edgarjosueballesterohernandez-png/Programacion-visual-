@@ -1,9 +1,16 @@
 ﻿namespace CalculatorApp
 {
-    partial class Calculator
+    partial class Form1
     {
+        /// <summary>
+        /// Variable del diseñador necesaria.
+        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
+        /// <summary>
+        /// Limpiar los recursos que se estén usando.
+        /// </summary>
+        /// <param name="disposing">true si los recursos administrados se deben desechar; false en caso contrario.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -13,8 +20,12 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Código generado por el Diseñador de Windows Forms
 
+        /// <summary>
+        /// Método necesario para admitir el Diseñador. No se puede modificar
+        /// el contenido de este método con el editor de código.
+        /// </summary>
         private void InitializeComponent()
         {
             this.txtDisplay = new System.Windows.Forms.TextBox();
@@ -48,6 +59,10 @@
             this.btn0 = new System.Windows.Forms.Button();
             this.btnDecimal = new System.Windows.Forms.Button();
             this.btnEquals = new System.Windows.Forms.Button();
+            this.btnSin = new System.Windows.Forms.Button();
+            this.btnCos = new System.Windows.Forms.Button();
+            this.btnTan = new System.Windows.Forms.Button();
+            this.btnFactorial = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtDisplay
@@ -330,11 +345,59 @@
             this.btnEquals.Text = "=";
             this.btnEquals.UseVisualStyleBackColor = true;
             // 
-            // Calculator
+            // btnSin
+            // 
+            this.btnSin.BackColor = System.Drawing.Color.Red;
+            this.btnSin.ForeColor = System.Drawing.Color.White;
+            this.btnSin.Location = new System.Drawing.Point(342, 50);
+            this.btnSin.Name = "btnSin";
+            this.btnSin.Size = new System.Drawing.Size(60, 40);
+            this.btnSin.TabIndex = 31;
+            this.btnSin.Text = "sin";
+            this.btnSin.UseVisualStyleBackColor = false;
+            // 
+            // btnCos
+            // 
+            this.btnCos.BackColor = System.Drawing.Color.Red;
+            this.btnCos.ForeColor = System.Drawing.Color.White;
+            this.btnCos.Location = new System.Drawing.Point(342, 96);
+            this.btnCos.Name = "btnCos";
+            this.btnCos.Size = new System.Drawing.Size(60, 40);
+            this.btnCos.TabIndex = 32;
+            this.btnCos.Text = "cos";
+            this.btnCos.UseVisualStyleBackColor = false;
+            // 
+            // btnTan
+            // 
+            this.btnTan.BackColor = System.Drawing.Color.Red;
+            this.btnTan.ForeColor = System.Drawing.Color.White;
+            this.btnTan.Location = new System.Drawing.Point(342, 142);
+            this.btnTan.Name = "btnTan";
+            this.btnTan.Size = new System.Drawing.Size(60, 40);
+            this.btnTan.TabIndex = 33;
+            this.btnTan.Text = "tan";
+            this.btnTan.UseVisualStyleBackColor = false;
+            // 
+            // btnFactorial
+            // 
+            this.btnFactorial.BackColor = System.Drawing.Color.Red;
+            this.btnFactorial.ForeColor = System.Drawing.Color.White;
+            this.btnFactorial.Location = new System.Drawing.Point(342, 188);
+            this.btnFactorial.Name = "btnFactorial";
+            this.btnFactorial.Size = new System.Drawing.Size(60, 40);
+            this.btnFactorial.TabIndex = 34;
+            this.btnFactorial.Text = "n!";
+            this.btnFactorial.UseVisualStyleBackColor = false;
+            // 
+            // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 381);
+            this.ClientSize = new System.Drawing.Size(414, 381);
+            this.Controls.Add(this.btnFactorial);
+            this.Controls.Add(this.btnTan);
+            this.Controls.Add(this.btnCos);
+            this.Controls.Add(this.btnSin);
             this.Controls.Add(this.btnEquals);
             this.Controls.Add(this.btnDecimal);
             this.Controls.Add(this.btn0);
@@ -366,8 +429,9 @@
             this.Controls.Add(this.btnMminus);
             this.Controls.Add(this.btnMplus);
             this.Controls.Add(this.txtDisplay);
-            this.Name = "Calculator";
+            this.Name = "Form1";
             this.Text = "Calculadora";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -406,5 +470,9 @@
         private System.Windows.Forms.Button btn0;
         private System.Windows.Forms.Button btnDecimal;
         private System.Windows.Forms.Button btnEquals;
+        private System.Windows.Forms.Button btnSin;
+        private System.Windows.Forms.Button btnCos;
+        private System.Windows.Forms.Button btnTan;
+        private System.Windows.Forms.Button btnFactorial;
     }
 }
