@@ -1,0 +1,10 @@
+C:\Users\talle\Downloads\trabajo2\trabajo2\bin\Debug\trabajo2.exe.config
+C:\Users\talle\Downloads\trabajo2\trabajo2\bin\Debug\trabajo2.exe
+C:\Users\talle\Downloads\trabajo2\trabajo2\bin\Debug\trabajo2.pdb
+C:\Users\talle\Downloads\trabajo2\trabajo2\obj\Debug\trabajo2.csproj.AssemblyReference.cache
+C:\Users\talle\Downloads\trabajo2\trabajo2\obj\Debug\GestorTareas.Form1.resources
+C:\Users\talle\Downloads\trabajo2\trabajo2\obj\Debug\trabajo2.Properties.Resources.resources
+C:\Users\talle\Downloads\trabajo2\trabajo2\obj\Debug\trabajo2.csproj.GenerateResource.cache
+C:\Users\talle\Downloads\trabajo2\trabajo2\obj\Debug\trabajo2.csproj.CoreCompileInputs.cache
+C:\Users\talle\Downloads\trabajo2\trabajo2\obj\Debug\trabajo2.exe
+C:\Users\talle\Downloads\trabajo2\trabajo2\obj\Debug\trabajo2.pdb
