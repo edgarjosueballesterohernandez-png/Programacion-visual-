@@ -1,0 +1,11 @@
+C:\Users\talle\Downloads\visor de imagenes silksong\visor de imagenes silksong\bin\Debug\visor de imagenes silksong.exe.config
+C:\Users\talle\Downloads\visor de imagenes silksong\visor de imagenes silksong\bin\Debug\visor de imagenes silksong.exe
+C:\Users\talle\Downloads\visor de imagenes silksong\visor de imagenes silksong\bin\Debug\visor de imagenes silksong.pdb
+C:\Users\talle\Downloads\visor de imagenes silksong\visor de imagenes silksong\obj\Debug\visor de imagenes silksong.csproj.AssemblyReference.cache
+C:\Users\talle\Downloads\visor de imagenes silksong\visor de imagenes silksong\obj\Debug\visor_de_imagenes_silksong.Properties.Resources.resources
+C:\Users\talle\Downloads\visor de imagenes silksong\visor de imagenes silksong\obj\Debug\visor de imagenes silksong.csproj.GenerateResource.cache
+C:\Users\talle\Downloads\visor de imagenes silksong\visor de imagenes silksong\obj\Debug\visor de imagenes silksong.csproj.CoreCompileInputs.cache
+C:\Users\talle\Downloads\visor de imagenes silksong\visor de imagenes silksong\obj\Debug\visor de imagenes silksong.exe
+C:\Users\talle\Downloads\visor de imagenes silksong\visor de imagenes silksong\obj\Debug\visor de imagenes silksong.pdb
+C:\Users\talle\Downloads\visor de imagenes silksong\visor de imagenes silksong\obj\Debug\visor de imagenes silksong.exe.config
+C:\Users\talle\Downloads\visor de imagenes silksong\visor de imagenes silksong\obj\Debug\VisorImagenes.Form1.resources
